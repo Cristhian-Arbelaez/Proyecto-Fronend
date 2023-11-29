@@ -2,9 +2,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="" class="brand-link">
-    <img src="vista/css/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-2"
+    <img src="vista/css/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-4"
       style="opacity: .8">
-    <span>Productos</span>
+      <span> Productos </span>
   </a>
 
   <!-- Sidebar -->
@@ -17,7 +17,7 @@
         <li class="nav-item">
           <a style="cursor: pointer;" class="nav-link active"
             onclick="CargarContenidoPagina('vista/dashboard.php','content-wrapper')">
-            <i class="nav-icon fas fa-th"></i>
+            <i class="nav-icon fas fa-store"></i>
             <p>
               Inicio
             </p>
@@ -27,7 +27,8 @@
         <li class="nav-item">
           <a style="cursor: pointer;" class="nav-link"
             onclick="CargarContenidoPagina('vista/vista-productos.php','content-wrapper')">
-            <i class="nav-icon fas fa-th"></i>
+            
+            <i class="nav-icon fas fa-cart-plus"></i>
             <p>
               Productos
             </p>
@@ -37,7 +38,7 @@
         <li class="nav-item">
           <a style="cursor: pointer;" class="nav-link"
             onclick="CargarContenidoPagina('vista/vista-categorias.php','content-wrapper')">
-            <i class="nav-icon fas fa-th"></i>
+            <i class="nav-icon fas fa-tags"></i>
             <p>
               Categorias
             </p>
@@ -47,7 +48,7 @@
         <li class="nav-item">
           <a style="cursor: pointer;" class="nav-link"
             onclick="CargarContenidoPagina('vista/vista-proveedores.php','content-wrapper')">
-            <i class="nav-icon fas fa-th"></i>
+            <i class="nav-icon fas fa-users"></i>
             <p>
               Proveedores
             </p>

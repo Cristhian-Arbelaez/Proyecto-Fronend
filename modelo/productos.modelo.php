@@ -5,7 +5,7 @@ class ProductosModelo
     static public function mdlListarProductos()
     {
 
-        $stmt = Conexion::conectar()->prepare("SELECT '' as detalles, p.ID_Producto, p.Nombre, p.Precio, c.Nombre as Nombre_Categoria, pro.Nombre as Nombre_Proveedor, p.Fecha, '' as opciones 
+        $stmt = Conexion::conectar()->prepare("SELECT '' as detalles, p.ID_Producto, p.Nombre, p.Precio, p.ID_Categoria, c.Nombre as Nombre_Categoria, p.ID_Proveedor, pro.Nombre as Nombre_Proveedor, p.Fecha, '' as opciones 
 FROM producto p INNER JOIN categoria c on p.ID_Categoria = c.ID_Categoria INNER JOIN proveedor pro on p.ID_Proveedor = pro.ID_Proveedor AND p.Precio > 0 ORDER BY p.ID_Producto DESC; EN");
 
         $stmt->execute();

@@ -32,7 +32,7 @@
 
                 </div>
                 <div class="icon">
-                  <i class="ion ion-beer"></i>
+                  <i class="ion ion-ios-cart"></i>
                 </div>
                 <a style="cursor:pointer;" class="small-box-footer" onclick="CargarContenidoPagina('vista/vista-productos.php','content-wrapper')">Más Información <i class="fas fa-arrow-circle-right"></i></a>
               </div>
@@ -48,7 +48,7 @@
 
                 </div>
                 <div class="icon">
-                  <i class="ion ion-compose"></i>
+                  <i class="ion ion-pricetags"></i>
                 </div>
                 <a style="cursor:pointer;" class="small-box-footer" onclick="CargarContenidoPagina('vista/vista-categorias.php','content-wrapper')">Más Información <i class="fas fa-arrow-circle-right"></i></a>
               </div>
@@ -64,7 +64,7 @@
 
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-stalker"></i>
+                  <i class="ion ion-ios-people"></i>
                 </div>
                 <a style="cursor:pointer;" class="small-box-footer" onclick="CargarContenidoPagina('vista/vista-proveedores.php','content-wrapper')">Más Información <i class="fas fa-arrow-circle-right"></i></a>
               </div>

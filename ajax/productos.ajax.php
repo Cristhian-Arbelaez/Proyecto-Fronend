@@ -33,13 +33,13 @@ class AjaxProductos
     }
 
 
-    public function ajaxActualizarProducto()
-    {
+    // public function ajaxActualizarProducto()
+    // {
 
-        $respuesta = ProductosControlador::ctrActualizarProducto($this->id_producto, $this->Nombre, $this->Precio, $this->ID_Proveedor);
+    //     $respuesta = ProductosControlador::ctrActualizarProducto($this->id_producto, $this->Nombre, $this->Precio, $this->ID_Proveedor);
 
-        echo json_encode($respuesta);
-    }
+    //     echo json_encode($respuesta);
+    // }
 
 }
 
@@ -54,6 +54,7 @@ if (isset($_POST["accion"]) && $_POST["accion"] == "1") {
     $agregarProducto->ID_Proveedor = $_POST["ID_Proveedor"];
     $agregarProducto->ID_Categoria = $_POST["ID_Categoria"];
     $agregarProducto->ajaxAgregarProducto();
+
 
 } else if (isset($_GET["accion"]) && $_GET["accion"] == "3") {
     $actualizarProducto = new AjaxProductos();
