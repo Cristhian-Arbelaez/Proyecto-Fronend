@@ -1,6 +1,7 @@
 <?php
 require_once "../controlador/proveedores.controlador.php";
 require_once "../modelo/proveedores.modelo.php";
+require_once "../modelo/productos.modelo.php";
 class AjaxProveedores
 {
     public $Nombre;
@@ -31,13 +32,28 @@ class AjaxProveedores
         echo json_encode($proveedor);
     }
 
-
-    public function ajaxActualizarProveedor()
+    public function ajaxActualizarProveedor($data)
     {
 
-        $proveedor2 = ProveedoresControlador::ctrActualizarProveedor($this->Id_Proveedor, $this->Nombre);
+        $table = "proveedor";
+        $id = $_POST["ID_Proveedor"];
+        $nameId = "ID_Proveedor";
 
-        echo json_encode($proveedor2);
+        $respuesta = ProveedoresControlador::ctrActualizarProveedor($table, $data, $id, $nameId);
+
+        echo json_encode($respuesta);
+    }
+
+    public function ajaxEliminarProveedor()
+    {
+
+        $table = "proveedor";
+        $id = $_POST["ID_Proveedor"];
+        $nameId = "ID_Proveedor";
+
+        $respuesta = ProveedoresControlador::ctrEliminarProveedor($table, $id, $nameId);
+
+        echo json_encode($respuesta);
     }
 
 }
@@ -52,11 +68,20 @@ if (isset($_POST["accion"]) && $_POST["accion"] == "4") {
     $agregarProveedor->Nombre = $_POST["Nombre"];
     $agregarProveedor->ajaxAgregarProveedor();
 
-} else if (isset($_POST["accion"]) && $_POST["accion"] == "6") {
+} else if (isset($_POST['accion']) && $_POST['accion'] == 6) { // ACCION PARA ACTUALIZAR UN PRODUCTO
+
     $actualizarProveedor = new AjaxProveedores();
-    $actualizarProveedor->Id_Proveedor = $_POST["ID_Proveedor"];
-    $actualizarProveedor->Nombre = $_POST["Nombre"];
-    $actualizarProveedor->ajaxActualizarProveedor();
+
+    $data = array(
+        "Nombre" => $_POST["Nombre"],
+    );
+
+    $actualizarProveedor->ajaxActualizarProveedor($data);
+
+} else if (isset($_POST['accion']) && $_POST['accion'] == 11) { // ACCION PARA ELIMINAR UN PRODUCTO
+
+    $eliminarProveedor = new AjaxProveedores();
+    $eliminarProveedor->ajaxEliminarProveedor();
 
 } else {
     $proveedores = new AjaxProveedores();

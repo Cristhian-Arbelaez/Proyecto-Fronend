@@ -36,8 +36,8 @@
                             <button type="button" class="btn btn-tool text-danger" id="btnLimpiarBusqueda">
                                 <i class="fas fa-trash fs-5"></i>
                             </button>
-                        </div> 
-                    </div> 
+                        </div>
+                    </div>
                     <div class="card-body">
 
                         <div class="row">
@@ -71,43 +71,43 @@
 
                             </div>
 
-                            </div>
-
                         </div>
-                    </div> <!-- ./ end card-body -->
-                </div>
 
+                    </div>
+                </div> <!-- ./ end card-body -->
             </div>
 
         </div>
-
-
-        <!-- Listado de productos-->
-        <div class="row">
-            <div class="col-lg-12">
-                <table id="tbl_productos" class="table table-striped w-100 shadow">
-                    <thead class="bg-info">
-                        <tr style="font-size: 15px;">
-                            <th></th>
-                            <th>ID Producto</th>
-                            <th>Nombre Producto</th>
-                            <th>Precio Producto</th>
-                            <th>ID Categoría</th>
-                            <th>Categoría</th>
-                            <th>ID Proveedor</th>
-                            <th>Proveedor</th>
-                            <th>Fecha Creación</th>
-                            <th class="text-cetner">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-small">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- Listado de productos-->
 
     </div>
+
+
+    <!-- Listado de productos-->
+    <div class="row">
+        <div class="col-lg-12">
+            <table id="tbl_productos" class="table table-striped w-100 shadow">
+                <thead class="bg-info">
+                    <tr style="font-size: 15px;">
+                        <th></th>
+                        <th>ID Producto</th>
+                        <th>Nombre Producto</th>
+                        <th>Precio Producto</th>
+                        <th>ID Categoría</th>
+                        <th>Categoría</th>
+                        <th>ID Proveedor</th>
+                        <th>Proveedor</th>
+                        <th>Fecha Creación</th>
+                        <th class="text-cetner">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody class="text-small">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Listado de productos-->
+
+</div>
 </div>
 
 <!-- VENTANA MODAL PARA AGREGAR PRODUCTO -->
@@ -132,7 +132,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="" for="iptNombreProducto"><i class="fas fa-file-signature fs-6"></i>
+                                <label class="" for="iptNombreProducto"><i class="fas fa-cart-plus fs-6"></i>
                                     <span class="small">Nombre Del Producto</span><span class="text-danger">*</span>
                                 </label>
                                 <input type="text" class="form-control form-control-sm" id="iptNombreProducto"
@@ -154,7 +154,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="" for="selCategoria"><i class="fas fa-dumpster fs-6"></i>
+                                <label class="" for="selCategoria"><i class="fas fa-tags fs-6"></i>
                                     <span class="small">Categoría</span><span class="text-danger">*</span>
                                 </label>
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example"
@@ -166,7 +166,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="" for="selProveedor"><i class="fas fa-dumpster fs-6"></i>
+                                <label class="" for="selProveedor"><i class="fas fa-users fs-6"></i>
                                     <span class="small">Proveedor</span><span class="text-danger">*</span>
                                 </label>
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example"
@@ -208,11 +208,21 @@
             <div class="modal-body">
                 <form class="needs-validation" novalidate>
                     <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="form-group mb-2">
+                                <label class="" for="iptIDProducto"><i class="fas fa-file-signature fs-6"></i>
+                                    <span class="small">ID Producto</span><span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control form-control-sm" id="iptIDProducto"
+                                    placeholder="ID Producto" required disabled>
+                                <div class="invalid-feedback">ID Producto</div>
+                            </div>
+                        </div>
+
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-
-                                <input type="hidden" id="ipt_ID_Producto" value="">
-                                <label class="" for="iptNombreProducto2"><i class="fas fa-file-signature fs-6"></i>
+                                <label class="" for="iptNombreProducto2"><i class="fas fa-cart-plus fs-6"></i>
                                     <span class="small">Nombre Del Producto</span><span class="text-danger">*</span>
                                 </label>
                                 <input type="text" class="form-control form-control-sm" id="iptNombreProducto2"
@@ -234,7 +244,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="" for="selCategoria2"><i class="fas fa-dumpster fs-6"></i>
+                                <label class="" for="selCategoria2"><i class="fas fa-tags fs-6"></i>
                                     <span class="small">Categoría</span><span class="text-danger">*</span>
                                 </label>
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example"
@@ -246,7 +256,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="" for="selProveedor2"><i class="fas fa-dumpster fs-6"></i>
+                                <label class="" for="selProveedor2"><i class="fas fa-users fs-6"></i>
                                     <span class="small">Proveedor</span><span class="text-danger">*</span>
                                 </label>
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example"
@@ -415,7 +425,7 @@
         $("#Categoria").keyup(function () {
             table.column($(this).data('index')).search(this.value).draw();
         })
-        
+
 
 
         $("#btnLimpiarBusqueda").on('click', function () {
@@ -432,92 +442,78 @@
         $('#tbl_productos tbody').on('click', '.btnEditarProducto', function () {
 
             $("#mdlActualizarProducto").modal('show');
+
             var data = table.row($(this).parents('tr')).data();
+            console.log("🚀 ~ file: productos.php ~ line 445 ~ $ ~ data", data)
             accion = 3;
 
+            $("#iptIDProducto").val(data[1]);
             $("#iptNombreProducto2").val(data[2]);
             $("#iptPrecioProducto2").val(data[3]);
             $("#selCategoria2").val(data[4]);
             $("#selProveedor2").val(data[6]);
 
-        })  
-    })
+        })
 
-    document.getElementById("btnGuardarRegistroProducto").addEventListener("click", function () {
+        $('#tbl_productos tbody').on('click', '.btnEliminarProducto', function () {
 
-        var form = document.getElementsByClassName('needs-validation');
-        var validation = Array.prototype.filter.call(form, function (form) {
-            if (form.checkValidity() === true) {
-                console.log("Listo Para Registrar El Producto")
+            accion = 10;
 
-                Swal.fire({
-                    title: 'Esta Seguro De Registrar Este Producto?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si, Deseo Registrarlo',
-                    cancelButtonText: 'Cancelar',
-                }).then((result) => {
+            var data = table.row($(this).parents('tr')).data();
 
-                    if (result.isConfirmed) {
-                        var datos = new FormData();
-                        datos.append("accion", accion);
-                        datos.append("Nombre", $("#iptNombreProducto").val());
-                        datos.append("Precio", $("#iptPrecioProducto").val());
-                        datos.append("ID_Proveedor", $("#selProveedor").val());
-                        datos.append("ID_Categoria", $("#selCategoria").val());
+            var id_producto = data["ID_Producto"];
 
-                        if (accion == 2) {
-                            var titulo_msj = "El Producto Se Agrego Correctamente"
-                        }
+            Swal.fire({
+                title: 'Está Seguro De Eliminar Este Producto?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, Deseo Eliminarlo!',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
 
-                        $.ajax({
-                            url: "ajax/productos.ajax.php",
-                            method: "POST",
-                            data: datos,
-                            cache: false,
-                            contentType: false,
-                            processData: false,
-                            dataType: 'json',
-                            success: function (respuesta) {
-                                if (respuesta == "ok") {
-                                    Toast.fire({
-                                        icon: 'success',
-                                        title: titulo_msj
-                                    });
+                if (result.isConfirmed) {
 
-                                    table.ajax.reload();
+                    var datos = new FormData();
 
-                                    $("#mdlAgregarProducto").modal('hide');
+                    datos.append("accion", accion);
+                    datos.append("ID_Producto", id_producto); //codigo_producto               
 
-                                    $("#iptNombreProducto").val("");
-                                    $("#iptPrecioProducto").val("");
-                                    $("#selProveedor").val(0);
-                                    $("#selCategoria").val(0);
+                    $.ajax({
+                        url: "ajax/productos.ajax.php",
+                        method: "POST",
+                        data: datos,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        dataType: 'json',
+                        success: function (respuesta) {
 
-                                } else {
-                                    Toast.fire({
-                                        icon: 'error',
-                                        title: 'El Producto No Fue Agregado'
-                                    });
-                                }
+                            if (respuesta == "ok") {
+
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: 'El Producto Se Eliminó Correctamente'
+                                });
+
+                                table.ajax.reload();
+
+                            } else {
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: 'El producto No Se Pudo Eliminar'
+                                });
                             }
 
-                        });
-                    }
-                })
+                        }
+                    });
 
+                }
+            })
+        })
 
-            } else {
-                console.log("No Paso La Validacion")
-            }
-
-            form.classList.add('was-validated');
-        });
-
-    });
-
+    })
 
     document.getElementById("btnGuardarRegistroProducto").addEventListener("click", function () {
 
@@ -614,18 +610,19 @@
                     if (result.isConfirmed) {
                         var datos = new FormData();
                         datos.append("accion", accion);
+                        datos.append("ID_Producto", $("#iptIDProducto").val());
                         datos.append("Nombre", $("#iptNombreProducto2").val());
                         datos.append("Precio", $("#iptPrecioProducto2").val());
                         datos.append("ID_Categoria", $("#selCategoria2").val());
                         datos.append("ID_Proveedor", $("#selProveedor2").val());
-                        
+
                         if (accion == 3) {
                             var titulo_msj = "El Producto Se Actualizo Correctamente"
                         }
 
                         $.ajax({
                             url: "ajax/productos.ajax.php",
-                            method: "GET",
+                            method: "POST",
                             data: datos,
                             cache: false,
                             contentType: false,
@@ -641,12 +638,13 @@
                                     table.ajax.reload();
 
                                     $("#mdlActualizarProducto").modal('hide');
-                                    
+
+                                    $("#iptIDProducto").val("");
                                     $("#iptNombreProducto2").val("");
                                     $("#iptPrecioProducto2").val("");
                                     $("#selCategoria2").val(0);
                                     $("#selProveedor2").val(0);
-                                    
+
                                 } else {
                                     Toast.fire({
                                         icon: 'error',

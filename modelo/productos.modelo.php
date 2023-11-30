@@ -40,27 +40,58 @@ FROM producto p INNER JOIN categoria c on p.ID_Categoria = c.ID_Categoria INNER 
         return $resultado;
     }
 
-
-    static public function mdlActualizarProducto($id_producto, $Nombre, $Precio, $ID_Proveedor)
+    static public function mdlActualizarInformacion($table, $data, $id, $nameId)
     {
-        try {
-            $stmt = Conexion::conectar()->prepare("UPDATE FROM producto p
-            SET Nombre = :Nombre, Precio = :Precio, ID_Proveedor = :ID_Proveedor");
 
-            //$stmt->bindParam(":id_roducto", $idproducto, PDO::PARAM_STR);
-            $stmt->bindParam(":Nombre", $Nombre, PDO::PARAM_STR);
-            $stmt->bindParam(":Precio", $Precio, PDO::PARAM_STR);
-            $stmt->bindParam(":ID_Proveedor", $ID_Provedor, PDO::PARAM_STR);
+        $set = "";
 
-            if ($stmt->execute()) {
-                $resultado = 'ok';
-            } else {
-                $resultado = 'error';
-            }
-        } catch (Exception $e) {
-            $resultado = 'Execepcion Capturada ' . $e->getMessage() . "\n";
+        foreach ($data as $key => $value) {
+
+            $set .= $key . " = :" . $key . ",";
+
         }
-        return $resultado;
+
+        $set = substr($set, 0, -1);
+
+        $stmt = Conexion::conectar()->prepare("UPDATE $table SET $set WHERE $nameId = :$nameId");
+
+        foreach ($data as $key => $value) {
+
+            $stmt->bindParam(":" . $key, $data[$key], PDO::PARAM_STR);
+
+        }
+
+        $stmt->bindParam(":" . $nameId, $id, PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+
+            return "ok";
+
+        } else {
+
+            return Conexion::conectar()->errorInfo();
+
+        }
+    }
+
+    static public function mdlEliminarInformacion($table, $id, $nameId)
+    {
+
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $table WHERE $nameId = :$nameId");
+
+        $stmt->bindParam(":" . $nameId, $id, PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+
+            return "ok";
+            ;
+
+        } else {
+
+            return Conexion::conectar()->errorInfo();
+
+        }
+
     }
 
 }

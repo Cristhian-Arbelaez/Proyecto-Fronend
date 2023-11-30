@@ -1,26 +1,37 @@
 <?php
-    class ProductosControlador{
-        static public function ctrListarProductos(){
+class ProductosControlador
+{
+    static public function ctrListarProductos()
+    {
 
-            $productos = ProductosModelo::mdlListarProductos();
-            
-            return $productos;
-        }
+        $productos = ProductosModelo::mdlListarProductos();
 
-        static public function ctrAgregarProducto($Nombre, $Precio, $ID_Proveedor, $ID_Categoria){
-
-            $registroproducto = ProductosModelo::mdlAgregarProducto($Nombre, $Precio, $ID_Proveedor, $ID_Categoria);
-            
-            return $registroproducto;
-        }
-
-        static public function ctrActualizarProducto($id_producto, $Nombre, $Precio, $ID_Proveedor){
-
-            $actualizarproducto = ProductosModelo::mdlActualizarProducto($id_producto, $Nombre, $Precio, $ID_Proveedor);
-            
-            return $actualizarproducto;
-        }
-
-        
+        return $productos;
     }
+
+    static public function ctrAgregarProducto($Nombre, $Precio, $ID_Proveedor, $ID_Categoria)
+    {
+
+        $registroproducto = ProductosModelo::mdlAgregarProducto($Nombre, $Precio, $ID_Proveedor, $ID_Categoria);
+
+        return $registroproducto;
+    }
+
+    static public function ctrActualizarProducto($table, $data, $id, $nameId)
+    {
+
+        $respuesta = ProductosModelo::mdlActualizarInformacion($table, $data, $id, $nameId);
+
+        return $respuesta;
+    }
+
+    static public function ctrEliminarProducto($table, $id, $nameId)
+    {
+        $respuesta = ProductosModelo::mdlEliminarInformacion($table, $id, $nameId);
+
+        return $respuesta;
+    }
+
+
+}
 ?>

@@ -9,11 +9,6 @@ class AjaxProductos
     public $ID_Proveedor;
     public $ID_Categoria;
 
-    public $id_producto;
-    public $nombre_producto;
-    public $precio_producto;
-    public $proveedor_producto;
-
 
     public function ajaxListarProductos()
     {
@@ -32,14 +27,29 @@ class AjaxProductos
         echo json_encode($producto);
     }
 
+    public function ajaxActualizarProducto($data)
+    {
 
-    // public function ajaxActualizarProducto()
-    // {
+        $table = "producto";
+        $id = $_POST["ID_Producto"];
+        $nameId = "ID_Producto";
 
-    //     $respuesta = ProductosControlador::ctrActualizarProducto($this->id_producto, $this->Nombre, $this->Precio, $this->ID_Proveedor);
+        $respuesta = ProductosControlador::ctrActualizarProducto($table, $data, $id, $nameId);
 
-    //     echo json_encode($respuesta);
-    // }
+        echo json_encode($respuesta);
+    }
+
+    public function ajaxEliminarProducto()
+    {
+
+        $table = "producto";
+        $id = $_POST["ID_Producto"];
+        $nameId = "ID_Producto";
+
+        $respuesta = ProductosControlador::ctrEliminarProducto($table, $id, $nameId);
+
+        echo json_encode($respuesta);
+    }
 
 }
 
@@ -56,13 +66,22 @@ if (isset($_POST["accion"]) && $_POST["accion"] == "1") {
     $agregarProducto->ajaxAgregarProducto();
 
 
-} else if (isset($_GET["accion"]) && $_GET["accion"] == "3") {
-    $actualizarProducto = new AjaxProductos();
-    $actualizarProducto->id_producto = $_GET["ID_Producto"];
-    $actualizarProducto->Nombre = $_GET["Nombre"];
-    $actualizarProducto->Precio = $_GET["Precio"];
-    $actualizarProducto->ID_Proveedor = $_GET["ID_Proveedor"];
-    $actualizarProducto->ajaxActualizarProducto();
+} else if (isset($_POST['accion']) && $_POST['accion'] == 3) { // ACCION PARA ACTUALIZAR UN PRODUCTO
+
+    $actualizarProducto = new ajaxProductos();
+
+    $data = array(
+        "Nombre" => $_POST["Nombre"],
+        "Precio" => $_POST["Precio"],
+        "ID_Proveedor" => $_POST["ID_Proveedor"],
+        "ID_Categoria" => $_POST["ID_Categoria"],
+    );
+
+    $actualizarProducto->ajaxActualizarProducto($data);
+} else if (isset($_POST['accion']) && $_POST['accion'] == 10) { // ACCION PARA ELIMINAR UN PRODUCTO
+
+    $eliminarProducto = new ajaxProductos();
+    $eliminarProducto->ajaxEliminarProducto();
 }
 
 

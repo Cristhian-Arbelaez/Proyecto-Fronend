@@ -89,7 +89,7 @@
     <?php
         include "vista/modulos/pie_de_página.php";
     ?>
-</div>
+  </div>
 <!-- ./wrapper -->
 
     <script>

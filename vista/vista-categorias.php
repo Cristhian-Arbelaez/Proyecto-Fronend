@@ -108,9 +108,9 @@
                 <form class="needs-validation" novalidate>
                     <div class="row">
 
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="" for="iptNombreCategoria"><i class="fas fa-file-signature fs-6"></i>
+                                <label class="" for="iptNombreCategoria"><i class="fas fa-tags fs-6"></i>
                                     <span class="small">Nombre De La Categoría</span><span class="text-danger">*</span>
                                 </label>
                                 <input type="text" class="form-control form-control-sm" id="iptNombreCategoria"
@@ -137,14 +137,14 @@
 <!-- VENTANA MODAL PARA AGREGAR PROVEEDOR -->
 
 <!-- VENTANA MODAL PARA ACTUALIZACION -->
-<div class="modal fade" id="mdlAgregarCategoria" role="dialog">
+<div class="modal fade" id="mdlActualizarCategoria" role="dialog">
 
     <div class="modal-dialog modal-lg">
 
         <div class="modal-content">
 
             <div class="modal-header bg-gray py-1 align-items-center">
-                <h5 class="modal-title">Agregar Categoría</h5>
+                <h5 class="modal-title">Actualizar Categoría</h5>
                 <button type="button" class="btn btn-outline-primary text-white border-0 fs-5" id="btnCerrarModal"
                     data-bs-dismiss="modal">
                     <i class="far fa-times-circle"></i>
@@ -156,12 +156,23 @@
                 <form class="needs-validation" novalidate>
                     <div class="row">
 
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="" for="iptNombreCategoria"><i class="fas fa-file-signature fs-6"></i>
+                                <label class="" for="iptIDCategoria"><i class="fas fa-file-signature fs-6"></i>
+                                    <span class="small">ID Categoría</span><span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control form-control-sm" id="iptIDCategoria"
+                                    placeholder="ID Categoría" required disabled>
+                                <div class="invalid-feedback">ID Categoría</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-2">
+                                <label class="" for="iptNombreCategoria2"><i class="fas fa-tags fs-6"></i>
                                     <span class="small">Nombre De La Categoría</span><span class="text-danger">*</span>
                                 </label>
-                                <input type="text" class="form-control form-control-sm" id="iptNombreCategoria"
+                                <input type="text" class="form-control form-control-sm" id="iptNombreCategoria2"
                                     placeholder="Nombre De La Categoría" required>
                                 <div class="invalid-feedback">Ingrese El Nombre De La Categoría</div>
                             </div>
@@ -172,7 +183,7 @@
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
                                     id="btnCancelarRegistroCategoria">Cancelar</button>
                                 <button type="button" class="btn btn-primary"
-                                    id="btnGuardarRegistroCategoria">Guardar</button>
+                                    id="btnActualizarCategoria">Guardar</button>
                             </div>
                         </div>
 
@@ -290,9 +301,67 @@
             var data = table.row($(this).parents('tr')).data();
             accion = 9;
 
-            $("#ipt_ID_Proveedor").val(data[1]);
-            $("#iptNombreProveedor2").val(data[2]);
+            $("#iptIDCategoria").val(data[1]);
+            $("#iptNombreCategoria2").val(data[2]);
 
+        })
+
+        $('#tbl_categorias tbody').on('click', '.btnEliminarCategoria', function () {
+
+            accion = 12;
+
+            var data = table.row($(this).parents('tr')).data();
+
+            var id_categoria = data["ID_Categoria"];
+
+            Swal.fire({
+                title: 'Está Seguro De Eliminar Esta Categoria?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, Deseo Eliminarla!',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    var datos = new FormData();
+
+                    datos.append("accion", accion);
+                    datos.append("ID_Categoria", id_categoria); //codigo_producto               
+
+                    $.ajax({
+                        url: "ajax/categorias.ajax.php",
+                        method: "POST",
+                        data: datos,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        dataType: 'json',
+                        success: function (respuesta) {
+
+                            if (respuesta == "ok") {
+
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: 'La Categoría Se Eliminó Correctamente'
+                                });
+
+                                table.ajax.reload();
+
+                            } else {
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: 'La Categoría No Se Pudo Eliminar'
+                                });
+                            }
+
+                        }
+                    });
+
+                }
+            })
         })
 
 
@@ -368,35 +437,35 @@
 
     });
 
-    document.getElementById("btnActualizarRegistroProveedor").addEventListener("click", function () {
+    document.getElementById("btnActualizarCategoria").addEventListener("click", function () {
 
         var form = document.getElementsByClassName('needs-validation');
         var validation = Array.prototype.filter.call(form, function (form) {
             if (form.checkValidity() === true) {
-                console.log("Listo Para Actualizar El Proveedor")
+                console.log("Listo Para Actualizar La Categoría")
 
                 Swal.fire({
-                    title: 'Esta Seguro De Actualizar Este Proveedor?',
+                    title: 'Esta Seguro De Actualizar Esta Categoría?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si, Deseo Actualizarlo',
+                    confirmButtonText: 'Si, Deseo Actualizarla',
                     cancelButtonText: 'Cancelar',
                 }).then((result) => {
 
                     if (result.isConfirmed) {
                         var datos = new FormData();
                         datos.append("accion", accion);
-                        datos.append("ID_Proveedor", $("#ipt_ID_Proveedor").val());
-                        datos.append("Nombre", $("#iptNombreProveedor2").val());
+                        datos.append("ID_Categoria", $("#iptIDCategoria").val());
+                        datos.append("Nombre", $("#iptNombreCategoria2").val());
 
-                        if (accion == 6) {
-                            var titulo_msj = "El Proveedor Se Actualizo Correctamente"
+                        if (accion == 9) {
+                            var titulo_msj = "La Categoría Se Actualizo Correctamente"
                         }
 
                         $.ajax({
-                            url: "ajax/proveedores.ajax.php",
+                            url: "ajax/categorias.ajax.php",
                             method: "POST",
                             data: datos,
                             cache: false,
@@ -412,15 +481,15 @@
 
                                     table.ajax.reload();
 
-                                    $("#mdlActualizarProveedor").modal('hide');
+                                    $("#mdlActualizarCategoria").modal('hide');
 
-                                    $("#ipt_ID_Proveedor").val("");
-                                    $("#iptNombreProveedor2").val("");
+                                    $("#iptIDCategoria").val("");
+                                    $("#iptNombreCategoria2").val("");
 
                                 } else {
                                     Toast.fire({
                                         icon: 'error',
-                                        title: 'El Proveedor No Fue Actualizado'
+                                        title: 'La Categoría No Fue Actualizado'
                                     });
                                 }
                             }

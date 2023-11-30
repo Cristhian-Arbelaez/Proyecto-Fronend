@@ -1,6 +1,7 @@
 <?php
 require_once "../controlador/categorias.controlador.php";
 require_once "../modelo/categorias.modelo.php";
+require_once "../modelo/productos.modelo.php";
 class AjaxCategorias
 {
     public $Nombre;
@@ -31,14 +32,29 @@ class AjaxCategorias
         echo json_encode($categoria);
     }
 
+    public function ajaxActualizarCategoria($data)
+    {
 
-    // public function ajaxActualizarProveedor()
-    // {
+        $table = "categoria";
+        $id = $_POST["ID_Categoria"];
+        $nameId = "ID_Categoria";
 
-    //     $proveedor2 = ProveedoresControlador::ctrActualizarProveedor($this->Id_Proveedor, $this->Nombre);
+        $respuesta = CategoriasControlador::ctrActualizarCategoria($table, $data, $id, $nameId);
 
-    //     echo json_encode($proveedor2);
-    // }
+        echo json_encode($respuesta);
+    }
+
+    public function ajaxEliminarCategoria()
+    {
+
+        $table = "categoria";
+        $id = $_POST["ID_Categoria"];
+        $nameId = "ID_Categoria";
+
+        $respuesta = CategoriasControlador::ctrEliminarCategoria($table, $id, $nameId);
+
+        echo json_encode($respuesta);
+    }
 
 }
 
@@ -52,11 +68,20 @@ if (isset($_POST["accion"]) && $_POST["accion"] == "7") {
     $agregarCategoria->Nombre = $_POST["Nombre"];
     $agregarCategoria->ajaxAgregarCategorias();
 
-} else if (isset($_POST["accion"]) && $_POST["accion"] == "9") {
-    $actualizarProveedor = new AjaxProveedores();
-    $actualizarProveedor->Id_Proveedor = $_POST["ID_Proveedor"];
-    $actualizarProveedor->Nombre = $_POST["Nombre"];
-    $actualizarProveedor->ajaxActualizarProveedor();
+} else if (isset($_POST['accion']) && $_POST['accion'] == 9) { // ACCION PARA ACTUALIZAR UN PRODUCTO
+
+    $actualizarCategoria = new AjaxCategorias();
+
+    $data = array(
+        "Nombre" => $_POST["Nombre"],
+    );
+
+    $actualizarCategoria->ajaxActualizarCategoria($data);
+
+} else if (isset($_POST['accion']) && $_POST['accion'] == 12) { // ACCION PARA ELIMINAR UN PRODUCTO
+
+    $eliminarCategoria = new AjaxCategorias();
+    $eliminarCategoria->ajaxEliminarCategoria();
 
 } else {
     $categorias = new AjaxCategorias();

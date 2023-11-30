@@ -44,27 +44,6 @@ class CategoriasModelo
         }
         return $resultado;
     }
-
-    // static public function mdlActualizarProveedor($ID_Proveedor, $Nombre)
-    // {
-    //     try {
-    //         $idproveedor = $ID_Proveedor;
-
-    //         $stmt = Conexion::conectar()->prepare("UPDATE FROM proveedor SET Nombre = $Nombre WHERE ID_Proveedor = $idproveedor");
-
-    //         $stmt->bindParam(":ID_Proveedor", $idproveedor, PDO::PARAM_STR);
-    //         $stmt->bindParam(":Nombre", $Nombre, PDO::PARAM_STR);
-
-    //         if ($stmt->execute()) {
-    //             $resultado = 'ok';
-    //         } else {
-    //             $resultado = 'error';
-    //         }
-    //     } catch (Exception $e) {
-    //         $resultado = 'Execepcion Capturada ' . $e->getMessage() . "\n";
-    //     }
-    //     return $resultado;
-    // }
 }
 
 

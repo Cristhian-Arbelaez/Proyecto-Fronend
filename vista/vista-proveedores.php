@@ -108,9 +108,9 @@
                 <form class="needs-validation" novalidate>
                     <div class="row">
 
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="" for="iptNombreProveedor"><i class="fas fa-file-signature fs-6"></i>
+                                <label class="" for="iptNombreProveedor"><i class="fas fa-users fs-6"></i>
                                     <span class="small">Nombre Del Proveedor</span><span class="text-danger">*</span>
                                 </label>
                                 <input type="text" class="form-control form-control-sm" id="iptNombreProveedor"
@@ -151,11 +151,21 @@
             <div class="modal-body">
                 <form class="needs-validation" novalidate>
                     <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group mb-2">
 
-                                <input type="hidden" id="ipt_ID_Proveedor" value="">
-                                <label class="" for="iptNombreProveedor2"><i class="fas fa-file-signature fs-6"></i>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-2">
+                                <label class="" for="iptIDProveedor"><i class="fas fa-file-signature fs-6"></i>
+                                    <span class="small">ID Proveedor</span><span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control form-control-sm" id="iptIDProveedor"
+                                    placeholder="ID Proveedor" required disabled>
+                                <div class="invalid-feedback">ID Proveedor</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-2">
+                                <label class="" for="iptNombreProveedor2"><i class="fas fa-users fs-6"></i>
                                     <span class="small">Nombre Del Proveedor</span><span class="text-danger">*</span>
                                 </label>
                                 <input type="text" class="form-control form-control-sm" id="iptNombreProveedor2"
@@ -286,11 +296,68 @@
             var data = table.row($(this).parents('tr')).data();
             accion = 6;
 
-            $("#ipt_ID_Proveedor").val(data[1]);
+            $("#iptIDProveedor").val(data[1]);
             $("#iptNombreProveedor2").val(data[2]);
 
         })
 
+        $('#tbl_proveedores tbody').on('click', '.btnEliminarProveedor', function () {
+
+            accion = 11;
+
+            var data = table.row($(this).parents('tr')).data();
+
+            var id_proveedor = data["ID_Proveedor"];
+
+            Swal.fire({
+                title: 'Está Seguro De Eliminar Este Proveedor?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, Deseo Eliminarlo!',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    var datos = new FormData();
+
+                    datos.append("accion", accion);
+                    datos.append("ID_Proveedor", id_proveedor); //codigo_producto               
+
+                    $.ajax({
+                        url: "ajax/proveedores.ajax.php",
+                        method: "POST",
+                        data: datos,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        dataType: 'json',
+                        success: function (respuesta) {
+
+                            if (respuesta == "ok") {
+
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: 'El Proveedor Se Eliminó Correctamente'
+                                });
+
+                                table.ajax.reload();
+
+                            } else {
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: 'El Proveedor No Se Pudo Eliminar'
+                                });
+                            }
+
+                        }
+                    });
+
+                }
+            })
+        })
 
     })
 
@@ -384,7 +451,7 @@
                     if (result.isConfirmed) {
                         var datos = new FormData();
                         datos.append("accion", accion);
-                        datos.append("ID_Proveedor", $("#ipt_ID_Proveedor").val());
+                        datos.append("ID_Proveedor", $("#iptIDProveedor").val());
                         datos.append("Nombre", $("#iptNombreProveedor2").val());
 
                         if (accion == 6) {
@@ -410,7 +477,7 @@
 
                                     $("#mdlActualizarProveedor").modal('hide');
 
-                                    $("#ipt_ID_Proveedor").val("");
+                                    $("#iptIDProveedor").val("");
                                     $("#iptNombreProveedor2").val("");
 
                                 } else {
