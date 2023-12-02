@@ -1,7 +1,7 @@
 <?php
 require_once "../controlador/proveedores.controlador.php";
 require_once "../modelo/proveedores.modelo.php";
-require_once "../modelo/productos.modelo.php";
+require_once "../modelo/editar-eliminar.modelo.php";
 class AjaxProveedores
 {
     public $Nombre;

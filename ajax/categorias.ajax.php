@@ -1,7 +1,7 @@
 <?php
 require_once "../controlador/categorias.controlador.php";
 require_once "../modelo/categorias.modelo.php";
-require_once "../modelo/productos.modelo.php";
+require_once "../modelo/editar-eliminar.modelo.php";
 class AjaxCategorias
 {
     public $Nombre;

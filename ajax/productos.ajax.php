@@ -1,6 +1,7 @@
 <?php
 require_once "../controlador/productos.controlador.php";
 require_once "../modelo/productos.modelo.php";
+require_once "../modelo/editar-eliminar.modelo.php";
 
 class AjaxProductos
 {

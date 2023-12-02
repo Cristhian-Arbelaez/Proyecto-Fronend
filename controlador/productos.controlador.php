@@ -20,14 +20,14 @@ class ProductosControlador
     static public function ctrActualizarProducto($table, $data, $id, $nameId)
     {
 
-        $respuesta = ProductosModelo::mdlActualizarInformacion($table, $data, $id, $nameId);
+        $respuesta = EditarEliminarModelo::mdlActualizarInformacion($table, $data, $id, $nameId);
 
         return $respuesta;
     }
 
     static public function ctrEliminarProducto($table, $id, $nameId)
     {
-        $respuesta = ProductosModelo::mdlEliminarInformacion($table, $id, $nameId);
+        $respuesta = EditarEliminarModelo::mdlEliminarInformacion($table, $id, $nameId);
 
         return $respuesta;
     }

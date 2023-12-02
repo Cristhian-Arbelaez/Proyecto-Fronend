@@ -24,14 +24,14 @@ class ProveedoresControlador
     static public function ctrActualizarProveedor($table, $data, $id, $nameId)
     {
 
-        $respuesta = ProductosModelo::mdlActualizarInformacion($table, $data, $id, $nameId);
+        $respuesta = EditarEliminarModelo::mdlActualizarInformacion($table, $data, $id, $nameId);
 
         return $respuesta;
     }
 
     static public function ctrEliminarProveedor($table, $id, $nameId)
     {
-        $respuesta = ProductosModelo::mdlEliminarInformacion($table, $id, $nameId);
+        $respuesta = EditarEliminarModelo::mdlEliminarInformacion($table, $id, $nameId);
 
         return $respuesta;
     }
