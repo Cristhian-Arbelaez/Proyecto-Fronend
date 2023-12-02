@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A.P. | Listas de Compras</title>
+  <title>A.P. | Inventario</title>
 
   <link rel="shortcut icon" href="vista/css/dist/img/AdminLTELogo.png" type="image/x-icon">
 
