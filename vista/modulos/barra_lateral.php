@@ -1,11 +1,21 @@
+<?php
+$menuUsuario = UsuarioControlador::ctrObtenerMenuUsuario($_SESSION["usuario"]->id_usuario);
+?>
+
+
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="" class="brand-link">
-    <img src="vista/css/dist/img/AP3.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-      style="opacity: .8">
-      <span class="brand-text font-weight-light"> A.P. | Inventario </span>
-  </a>
+  <div class="brand-link">
+    <div class="image">
+      <img src="vista/css/dist/img/usuario.png" alt="User Image" class="brand-image img-circle elevation-3">
+    </div>
+    <div class="info">
+      <h5 class="brand-text"><?php if(isset($_COOKIE['Usuario'])){
+        echo $_COOKIE['Usuario'];
+      }?>
+    </div>
+  </div>
 
   <!-- Sidebar -->
   <div class="sidebar">
@@ -14,46 +24,33 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+        <?php foreach ($menuUsuario as $menu): ?>
+          <li class="nav-item">
+            <a style="cursor: pointer;" 
+               class="nav-link 
+                <?php if ($menu->vista_inicio == 1) : ?>
+                  <?php echo 'active'?>
+                <?php endif;?>"
+            <?php if(!empty($menu->vista)) :?>
+              onclick="CargarContenidoPagina('vista/<?php echo $menu->vista;?>','content-wrapper')"
+            <?php endif; ?>>
+              <i class="nav-icon <?php echo $menu->icon_menu; ?>"></i>
+              <p>
+                <?php echo $menu->modulo ?>
+              </p>
+            </a>
+          </li>
+        <?php endforeach; ?>
+
         <li class="nav-item">
-          <a style="cursor: pointer;" class="nav-link active"
-            onclick="CargarContenidoPagina('vista/dashboard.php','content-wrapper')">
-            <i class="nav-icon fas fa-store"></i>
+          <a href="http://localhost/Proyecto-Fronend?cerrar_sesion=1" class="nav-link">
+            <i class="nav-icon fas fa-window-close"></i>
             <p>
-              Inicio
+              Cerrar Sesión
             </p>
           </a>
         </li>
 
-        <li class="nav-item">
-          <a style="cursor: pointer;" class="nav-link"
-            onclick="CargarContenidoPagina('vista/vista-productos.php','content-wrapper')">
-            
-            <i class="nav-icon fas fa-cart-plus"></i>
-            <p>
-              Productos
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a style="cursor: pointer;" class="nav-link"
-            onclick="CargarContenidoPagina('vista/vista-categorias.php','content-wrapper')">
-            <i class="nav-icon fas fa-tags"></i>
-            <p>
-              Categorias
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a style="cursor: pointer;" class="nav-link"
-            onclick="CargarContenidoPagina('vista/vista-proveedores.php','content-wrapper')">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-              Proveedores
-            </p>
-          </a>
-        </li>
       </ul>
       </li>
       </ul>

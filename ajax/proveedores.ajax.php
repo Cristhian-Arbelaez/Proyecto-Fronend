@@ -5,8 +5,6 @@ require_once "../modelo/editar-eliminar.modelo.php";
 class AjaxProveedores
 {
     public $Nombre;
-    public $Id_Proveedor;
-
 
     public function ajaxListarProveedores()
     {
@@ -26,7 +24,6 @@ class AjaxProveedores
 
     public function ajaxAgregarProveedor()
     {
-
         $proveedor = ProveedoresControlador::ctrAgregarProveedor($this->Nombre);
 
         echo json_encode($proveedor);
@@ -34,7 +31,6 @@ class AjaxProveedores
 
     public function ajaxActualizarProveedor($data)
     {
-
         $table = "proveedor";
         $id = $_POST["ID_Proveedor"];
         $nameId = "ID_Proveedor";
@@ -46,7 +42,6 @@ class AjaxProveedores
 
     public function ajaxEliminarProveedor()
     {
-
         $table = "proveedor";
         $id = $_POST["ID_Proveedor"];
         $nameId = "ID_Proveedor";
@@ -68,7 +63,7 @@ if (isset($_POST["accion"]) && $_POST["accion"] == "4") {
     $agregarProveedor->Nombre = $_POST["Nombre"];
     $agregarProveedor->ajaxAgregarProveedor();
 
-} else if (isset($_POST['accion']) && $_POST['accion'] == 6) { // ACCION PARA ACTUALIZAR UN PRODUCTO
+} else if (isset($_POST['accion']) && $_POST['accion'] == 6) { 
 
     $actualizarProveedor = new AjaxProveedores();
 
@@ -78,7 +73,7 @@ if (isset($_POST["accion"]) && $_POST["accion"] == "4") {
 
     $actualizarProveedor->ajaxActualizarProveedor($data);
 
-} else if (isset($_POST['accion']) && $_POST['accion'] == 11) { // ACCION PARA ELIMINAR UN PRODUCTO
+} else if (isset($_POST['accion']) && $_POST['accion'] == 11) { 
 
     $eliminarProveedor = new AjaxProveedores();
     $eliminarProveedor->ajaxEliminarProveedor();

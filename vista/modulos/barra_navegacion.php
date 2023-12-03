@@ -1,15 +1,17 @@
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    
-    <!-- Botones de navegacion  -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
+
+  <!-- Botones de navegacion  -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+    </li>
+
+    <li class="nav-item d-none d-sm-inline-block">
         <a style="cursor: pointer;" class="nav-link active" onclick="CargarContenidoPagina('vista/dashboard.php','content-wrapper')">Inicio</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      
+    <!-- <li class="nav-item d-none d-sm-inline-block">
         <a style="cursor: pointer;" class="nav-link" onclick="CargarContenidoPagina('vista/vista-productos.php','content-wrapper')">Productos</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
@@ -17,24 +19,24 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a style="cursor: pointer;" class="nav-link" onclick="CargarContenidoPagina('vista/vista-proveedores.php','content-wrapper')">Proveedores</a>
-      </li>
-    </ul>
+      </li> -->
+  </ul>
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+  <!-- Right navbar links -->
+  <ul class="navbar-nav ml-auto">
 
-      <!-- Vista Pantalla Completa -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
+    <!-- Vista Pantalla Completa -->
+    <li class="nav-item">
+      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <i class="fas fa-expand-arrows-alt"></i>
+      </a>
+    </li>
 
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
+    <li class="nav-item">
+      <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+        <i class="fas fa-th-large"></i>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!-- /.navbar -->

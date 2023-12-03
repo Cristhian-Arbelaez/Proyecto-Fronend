@@ -68,7 +68,7 @@ if (isset($_POST["accion"]) && $_POST["accion"] == "7") {
     $agregarCategoria->Nombre = $_POST["Nombre"];
     $agregarCategoria->ajaxAgregarCategorias();
 
-} else if (isset($_POST['accion']) && $_POST['accion'] == 9) { // ACCION PARA ACTUALIZAR UN PRODUCTO
+} else if (isset($_POST['accion']) && $_POST['accion'] == 9) { 
 
     $actualizarCategoria = new AjaxCategorias();
 
@@ -78,7 +78,7 @@ if (isset($_POST["accion"]) && $_POST["accion"] == "7") {
 
     $actualizarCategoria->ajaxActualizarCategoria($data);
 
-} else if (isset($_POST['accion']) && $_POST['accion'] == 12) { // ACCION PARA ELIMINAR UN PRODUCTO
+} else if (isset($_POST['accion']) && $_POST['accion'] == 12) { 
 
     $eliminarCategoria = new AjaxCategorias();
     $eliminarCategoria->ajaxEliminarCategoria();
